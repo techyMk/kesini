@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --use-npm --turbo --yes)",
+      "Bash(cd \"c:/Users/shoba/OneDrive/Documents/kesini\" && mv assets _assets_temp && npx --yes create-next-app@latest . --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --use-npm --turbo --yes 2>&1 | tail -30)",
+      "Bash(cd \"c:/Users/shoba/OneDrive/Documents/kesini\" && mv _assets_temp \"../kesini_logo_temp\" && ls -la)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\shoba\\OneDrive\\Documents"
+    ]
+  }
+}
