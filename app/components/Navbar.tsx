@@ -95,38 +95,31 @@ export default function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-[#1E1E1E]/50 backdrop-blur-md lg:hidden"
-            onClick={() => setOpen(false)}
-          >
+          <div className="fixed inset-0 z-[60] lg:hidden">
+            {/* Backdrop — separate element so it can't share styles with the panel */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-[#1E1E1E]/55 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
+            />
+
+            {/* Drawer panel — solid cream, opaque, isolated stacking context */}
             <motion.aside
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.45, ease: [0.22, 0.7, 0.2, 1] }}
-              className="absolute right-0 top-0 h-full w-[88%] max-w-sm flex flex-col shadow-[-30px_0_60px_-20px_rgba(30,30,30,0.45)]"
-              onClick={(e) => e.stopPropagation()}
+              className="absolute right-0 top-0 bottom-0 w-[88%] max-w-sm flex flex-col bg-[#FAF7F2] shadow-[-30px_0_60px_-20px_rgba(30,30,30,0.5)]"
               style={{
-                background: "#FAF7F2",
+                backgroundColor: "#FAF7F2",
                 borderLeft: "1px solid rgba(212, 160, 23, 0.25)",
-                isolation: "isolate",
               }}
             >
-              {/* Subtle warm wash at the top for depth */}
-              <span
-                aria-hidden
-                className="absolute top-0 inset-x-0 h-40 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230, 192, 104, 0.25), transparent 70%)",
-                }}
-              />
-
-              <div className="relative flex items-center justify-between h-20 px-6 border-b border-[#D4A017]/15">
+              {/* Header */}
+              <div className="relative flex items-center justify-between h-20 px-6 border-b border-[#D4A017]/15 bg-[#FAF7F2]">
                 <span className="relative inline-flex h-14 w-28">
                   <Image
                     src="/brand/kesini-logo.png"
@@ -146,7 +139,8 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <nav className="relative flex flex-col gap-1 px-6 py-10 flex-1">
+              {/* Nav body */}
+              <nav className="relative flex flex-col px-6 py-8 flex-1 bg-[#FAF7F2]">
                 {nav.map((item, i) => (
                   <motion.a
                     key={item.href}
@@ -158,22 +152,23 @@ export default function Navbar() {
                       x: 0,
                       transition: { delay: 0.12 + i * 0.05, duration: 0.5 },
                     }}
-                    className="group flex items-baseline gap-4 py-2 border-b border-[#1E1E1E]/8 last:border-0"
+                    className="group flex items-baseline gap-4 py-2.5 border-b border-[#1E1E1E]/8 last:border-0"
                   >
                     <span className="text-[0.55rem] num text-[#A07F0F] w-6 tabular-nums">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-display text-3xl text-[#1E1E1E] group-hover:text-[#A07F0F] transition-colors flex-1">
+                    <span className="font-display text-[1.7rem] text-[#1E1E1E] group-hover:text-[#A07F0F] transition-colors flex-1 leading-tight">
                       {item.label}
                     </span>
-                    <span className="text-[#A07F0F]/0 group-hover:text-[#A07F0F]/100 transition-colors">
+                    <span className="text-[#A07F0F] opacity-0 group-hover:opacity-100 transition-opacity">
                       <Icon name="arrow" size={16} />
                     </span>
                   </motion.a>
                 ))}
               </nav>
 
-              <div className="relative mt-auto p-6 border-t border-[#D4A017]/15 flex flex-col gap-4 bg-[#F5EFE6]">
+              {/* Footer CTA */}
+              <div className="relative p-6 border-t border-[#D4A017]/15 flex flex-col gap-4 bg-[#F5EFE6]">
                 <a
                   href="#book"
                   onClick={() => setOpen(false)}
@@ -190,7 +185,7 @@ export default function Navbar() {
                 </a>
               </div>
             </motion.aside>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </header>
