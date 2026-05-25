@@ -5,7 +5,22 @@
       "Bash(npx --version)",
       "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --use-npm --turbo --yes)",
       "Bash(cd \"c:/Users/shoba/OneDrive/Documents/kesini\" && mv assets _assets_temp && npx --yes create-next-app@latest . --typescript --tailwind --app --no-eslint --no-src-dir --import-alias \"@/*\" --use-npm --turbo --yes 2>&1 | tail -30)",
-      "Bash(cd \"c:/Users/shoba/OneDrive/Documents/kesini\" && mv _assets_temp \"../kesini_logo_temp\" && ls -la)"
+      "Bash(cd \"c:/Users/shoba/OneDrive/Documents/kesini\" && mv _assets_temp \"../kesini_logo_temp\" && ls -la)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Read(//tmp/claude/c--Users-shoba-OneDrive-Documents-kesini/422e7cd5-d161-4637-bd83-97afec1be54d/tasks/**)",
+      "Bash(ls \"/c/Users/shoba/AppData/Local/Temp/claude/c--Users-shoba-OneDrive-Documents-kesini/422e7cd5-d161-4637-bd83-97afec1be54d/tasks/\" 2>&1 | head -5)",
+      "Read(//c/Users/shoba/AppData/Local/Temp/claude/c--Users-shoba-OneDrive-Documents-kesini/422e7cd5-d161-4637-bd83-97afec1be54d/tasks//**)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} in %{time_total}s\\\\n\" http://localhost:3001/)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(curl -s http://localhost:3001/ -o /tmp/kesini-home.html)",
+      "Read(//tmp/**)",
+      "Bash(git config *)",
+      "Bash(echo \"tsc_exit=$?\")",
+      "Bash(curl -s -o /tmp/kesini-v2.html -w \"HTTP %{http_code} in %{time_total}s\\\\n\" http://localhost:3001/)",
+      "Bash(echo \"tsc=$?\")",
+      "Bash(curl -s -o /tmp/k3.html -w \"HTTP %{http_code} in %{time_total}s\\\\n\" http://localhost:3001/)"
     ],
     "additionalDirectories": [
       "c:\\Users\\shoba\\OneDrive\\Documents"
