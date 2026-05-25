@@ -16,16 +16,38 @@ export default function BookingCTA() {
   const [notes, setNotes] = useState("");
 
   const whatsappHref = useMemo(() => {
+    // Format ISO date (yyyy-mm-dd) → "Mon, 25 May 2026"
+    const prettyDate = (() => {
+      if (!date) return "";
+      const [y, m, d] = date.split("-").map(Number);
+      return new Date(y, m - 1, d).toLocaleDateString("en-GB", {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+    })();
+
+    // Format 24h time (HH:MM) → "2:30 PM"
+    const prettyTime = (() => {
+      if (!time) return "";
+      const [hh, mm] = time.split(":").map(Number);
+      const period = hh >= 12 ? "PM" : "AM";
+      const h12 = hh === 0 ? 12 : hh > 12 ? hh - 12 : hh;
+      return `${h12}:${String(mm).padStart(2, "0")} ${period}`;
+    })();
+
     const lines = [
       `Hello Kesini, I'd like to book an appointment.`,
       ``,
       name && `Name: ${name}`,
       phone && `Phone: ${phone}`,
       `Service: ${service}`,
-      date && `Date: ${date}`,
-      time && `Time: ${time}`,
+      prettyDate && `Date: ${prettyDate}`,
+      prettyTime && `Time: ${prettyTime}`,
       notes && `Notes: ${notes}`,
     ].filter(Boolean) as string[];
+
     return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
   }, [name, phone, service, date, time, notes]);
 
